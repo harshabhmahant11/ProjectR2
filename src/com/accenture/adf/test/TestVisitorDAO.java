@@ -101,6 +101,22 @@ public class TestVisitorDAO {
 		 * @TODO: Call searchUser method for valid values of username
 		 * and password and assert the value of username for the returned type of method
 		 */		
+		visitor.setUserName("bsmith");
+		visitor.setVisitorId(1001);
+		Visitor v1 = null;
+		try {
+			v1 = visitorDAO.searchUser("bsmith", "password");
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		assertEquals(visitor.getVisitorId(),v1.getVisitorId());
+	
 	}
 
 	/**
