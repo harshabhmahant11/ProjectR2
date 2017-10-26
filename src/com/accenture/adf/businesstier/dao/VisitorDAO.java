@@ -359,11 +359,24 @@ public class VisitorDAO {
 	public void unregisterEvent(Visitor visitor, int eventid, int eventsessionid)
 			throws ClassNotFoundException, SQLException, Exception {
 
+		connection = FERSDataConnection.createConnection();
+		statement = connection.prepareStatement(query.getDeleteEventQuery());
+		statement.setInt(1,eventsessionid);
+		statement.setInt(2,eventid);
+		statement.setInt(3,visitor.getVisitorId());
+		int status = statement.executeUpdate();
+		if(status<0){
+			log.error("No entry deleted.");
+		}
 		// TODO:  Add code here.....
         // TODO:  Pseudo-code are in the block comments above this method.
         // TODO:  For more comprehensive pseudo-code with details, 
 		//        refer to the Component/Class Detail Design Document
 
+	
+		FERSDataConnection.closeConnection();
+		
 	}
+	
 
 }
