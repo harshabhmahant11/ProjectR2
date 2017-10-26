@@ -39,7 +39,7 @@ public class FERSDataConnection {
 			SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		connection = DriverManager.getConnection(
-				"jdbc:mysql://localhost/festivaldatabase2", "root", "abcd1234");
+				"jdbc:mysql://localhost/festivaldatabase2", "root", "root");
 		log.info("----Connection established with MYSQL database----");
 		return connection;
 	}
